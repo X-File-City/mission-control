@@ -1,0 +1,233 @@
+{
+  "id": "mission-control-onboarding",
+  "title": "Mission Control: Agent Orchestration Dashboard",
+  "description": "A guided tour of the Mission Control codebase — a full-stack Next.js 16 dashboard for managing AI agent fleets, tracking tasks, monitoring costs, and orchestrating multi-agent workflows.",
+  "version": "1.0.0",
+  "steps": [
+    {
+      "id": "overview",
+      "title": "Welcome to Mission Control",
+      "description": "Mission Control is a production-grade agent orchestration dashboard built with Next.js 16, React 19, SQLite, and Zustand. It runs with zero external dependencies — just `pnpm start`. This view shows the full codebase: source code in `src/`, end-to-end tests in `tests/`, operations scripts in `ops/`, and configuration at the root.",
+      "colorMode": "fileTypes"
+    },
+    {
+      "id": "app-router",
+      "title": "Next.js App Router — Pages & 66 API Routes",
+      "description": "The `app/` directory uses Next.js App Router with a catch-all `[[...panel]]/page.tsx` that routes all 28 panels as a single-page app. The `api/` subdirectory contains 66 REST endpoints across 38 route groups covering agents, tasks, auth, sessions, webhooks, chat, pipelines, and more.",
+      "focusDirectory": "src/app",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "spa-entry",
+          "name": "SPA Entry Point",
+          "color": "#f59e0b",
+          "items": [
+            { "path": "src/app/[[...panel]]", "type": "directory" }
+          ],
+          "opacity": 0.7,
+          "renderStrategy": "border"
+        },
+        {
+          "id": "api-routes",
+          "name": "API Routes",
+          "color": "#3b82f6",
+          "items": [
+            { "path": "src/app/api", "type": "directory" }
+          ],
+          "opacity": 0.6,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "components",
+      "title": "UI Components — 28 Panels & Layout System",
+      "description": "The component layer is organized into layout (NavRail, HeaderBar, LiveFeed), dashboard (StatsGrid, AgentNetwork, SessionsList), 28 feature panels (task board, agent squad, token dashboard, log viewer, webhook manager, etc.), chat (conversations, message bubbles), and shared UI primitives. Each panel is wrapped in an ErrorBoundary to isolate failures.",
+      "focusDirectory": "src/components",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "layout-components",
+          "name": "Layout Shell",
+          "color": "#8b5cf6",
+          "items": [
+            { "path": "src/components/layout", "type": "directory" },
+            { "path": "src/components/dashboard", "type": "directory" }
+          ],
+          "opacity": 0.7,
+          "renderStrategy": "border"
+        },
+        {
+          "id": "feature-panels",
+          "name": "Feature Panels",
+          "color": "#10b981",
+          "items": [
+            { "path": "src/components/panels", "type": "directory" }
+          ],
+          "opacity": 0.7,
+          "renderStrategy": "border"
+        },
+        {
+          "id": "chat-system",
+          "name": "Chat System",
+          "color": "#ec4899",
+          "items": [
+            { "path": "src/components/chat", "type": "directory" }
+          ],
+          "opacity": 0.7,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "core-libraries",
+      "title": "Core Libraries — Database, Auth, Real-Time & More",
+      "description": "The `lib/` directory is the engine room. Key modules: `db.ts` (SQLite with WAL mode, auto-migrations), `auth.ts` (session cookies, API keys, RBAC with admin/operator/viewer roles), `websocket.ts` (Ed25519 handshake, heartbeat, reconnection), `webhooks.ts` (outbound delivery with circuit breaker), and `scheduler.ts` (background jobs for backups, cleanup, agent monitoring).",
+      "focusDirectory": "src/lib",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "data-layer",
+          "name": "Database & Schema",
+          "color": "#f59e0b",
+          "items": [
+            { "path": "src/lib/db.ts", "type": "file" },
+            { "path": "src/lib/migrations.ts", "type": "file" },
+            { "path": "src/lib/schema.sql", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        },
+        {
+          "id": "auth-security",
+          "name": "Auth & Security",
+          "color": "#ef4444",
+          "items": [
+            { "path": "src/lib/auth.ts", "type": "file" },
+            { "path": "src/lib/device-identity.ts", "type": "file" },
+            { "path": "src/lib/password.ts", "type": "file" },
+            { "path": "src/lib/rate-limit.ts", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        },
+        {
+          "id": "realtime",
+          "name": "Real-Time Communication",
+          "color": "#3b82f6",
+          "items": [
+            { "path": "src/lib/websocket.ts", "type": "file" },
+            { "path": "src/lib/use-server-events.ts", "type": "file" },
+            { "path": "src/lib/event-bus.ts", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        },
+        {
+          "id": "integrations",
+          "name": "Integrations & Background Jobs",
+          "color": "#10b981",
+          "items": [
+            { "path": "src/lib/webhooks.ts", "type": "file" },
+            { "path": "src/lib/scheduler.ts", "type": "file" },
+            { "path": "src/lib/agent-sync.ts", "type": "file" },
+            { "path": "src/lib/claude-sessions.ts", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "state-management",
+      "title": "State Management — Zustand Store",
+      "description": "A single Zustand store (`store/index.ts`) manages 60+ state atoms across all domains: dashboard mode, auth, WebSocket connection, tasks, agents, activities, notifications, sessions, token usage, chat, cron jobs, and UI state. Uses `subscribeWithSelector` middleware and persists UI preferences to localStorage.",
+      "focusDirectory": "src/store",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "store",
+          "name": "Global Store",
+          "color": "#8b5cf6",
+          "items": [
+            { "path": "src/store/index.ts", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "security-proxy",
+      "title": "Security Layer — Proxy, CSRF & Access Control",
+      "description": "The `proxy.ts` middleware runs before every request, enforcing host allowlisting, CSRF origin validation on mutations, and auth requirements. Combined with rate limiting, audit logging, HMAC-signed webhooks, and Ed25519 device identity, Mission Control implements defense-in-depth security.",
+      "focusDirectory": "src",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "security-files",
+          "name": "Security Boundary",
+          "color": "#ef4444",
+          "items": [
+            { "path": "src/proxy.ts", "type": "file" },
+            { "path": "src/lib/auth.ts", "type": "file" },
+            { "path": "src/lib/rate-limit.ts", "type": "file" },
+            { "path": "src/lib/device-identity.ts", "type": "file" },
+            { "path": "src/lib/validation.ts", "type": "file" }
+          ],
+          "opacity": 0.8,
+          "renderStrategy": "border"
+        }
+      ]
+    },
+    {
+      "id": "testing",
+      "title": "Testing — Vitest & Playwright",
+      "description": "Unit tests use Vitest with jsdom (60% coverage threshold). End-to-end tests use Playwright with 148 tests covering auth flows, panel navigation, API endpoints, and real-time features. Run `pnpm quality:gate` to execute lint, typecheck, and all tests in one pass.",
+      "focusDirectory": "tests",
+      "colorMode": "fileTypes"
+    },
+    {
+      "id": "full-picture",
+      "title": "The Full Picture",
+      "description": "Mission Control is a production-grade, full-stack agent orchestration dashboard. Key architectural patterns: event-driven SSE broadcasting, WebSocket with Ed25519 crypto handshake, RBAC with three tiers, SQLite with WAL for zero-config persistence, and a 28-panel SPA. Explore the codebase to dive deeper into any area.",
+      "focusDirectory": "",
+      "colorMode": "fileTypes",
+      "highlightLayers": [
+        {
+          "id": "source",
+          "name": "Source Code",
+          "color": "#3b82f6",
+          "items": [
+            { "path": "src", "type": "directory" }
+          ],
+          "opacity": 0.5,
+          "renderStrategy": "border"
+        },
+        {
+          "id": "tests-layer",
+          "name": "Tests",
+          "color": "#10b981",
+          "items": [
+            { "path": "tests", "type": "directory" }
+          ],
+          "opacity": 0.5,
+          "renderStrategy": "border"
+        },
+        {
+          "id": "config-layer",
+          "name": "Configuration",
+          "color": "#f59e0b",
+          "items": [
+            { "path": "package.json", "type": "file" },
+            { "path": "next.config.js", "type": "file" },
+            { "path": "tsconfig.json", "type": "file" },
+            { "path": "tailwind.config.js", "type": "file" }
+          ],
+          "opacity": 0.5,
+          "renderStrategy": "border"
+        }
+      ]
+    }
+  ]
+}
