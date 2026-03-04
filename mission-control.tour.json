@@ -7,26 +7,16 @@
     {
       "id": "overview",
       "title": "Welcome to Mission Control",
-      "description": "Mission Control is a production-grade agent orchestration dashboard built with Next.js 16, React 19, SQLite, and Zustand. It runs with zero external dependencies — just `pnpm start`. This view shows the full codebase: source code in `src/`, end-to-end tests in `tests/`, operations scripts in `ops/`, and configuration at the root.",
+      "description": "Mission Control is a production-grade agent orchestration dashboard built with Next.js 16, React 19, SQLite, and Zustand. It runs with zero external dependencies — just pnpm start. This view shows the full codebase: source code in src/, end-to-end tests in tests/, operations scripts in ops/, and configuration at the root.",
       "colorMode": "fileTypes"
     },
     {
       "id": "app-router",
       "title": "Next.js App Router — Pages & 66 API Routes",
-      "description": "The `app/` directory uses Next.js App Router with a catch-all `[[...panel]]/page.tsx` that routes all 28 panels as a single-page app. The `api/` subdirectory contains 66 REST endpoints across 38 route groups covering agents, tasks, auth, sessions, webhooks, chat, pipelines, and more.",
+      "description": "The app/ directory uses Next.js App Router to route all 28 panels as a single-page app. The api/ subdirectory contains 66 REST endpoints across 38 route groups covering agents, tasks, auth, sessions, webhooks, chat, pipelines, and more.",
       "focusDirectory": "src/app",
       "colorMode": "fileTypes",
       "highlightLayers": [
-        {
-          "id": "spa-entry",
-          "name": "SPA Entry Point",
-          "color": "#f59e0b",
-          "items": [
-            { "path": "src/app/[[...panel]]", "type": "directory" }
-          ],
-          "opacity": 0.7,
-          "renderStrategy": "border"
-        },
         {
           "id": "api-routes",
           "name": "API Routes",
@@ -82,7 +72,7 @@
     {
       "id": "core-libraries",
       "title": "Core Libraries — Database, Auth, Real-Time & More",
-      "description": "The `lib/` directory is the engine room. Key modules: `db.ts` (SQLite with WAL mode, auto-migrations), `auth.ts` (session cookies, API keys, RBAC with admin/operator/viewer roles), `websocket.ts` (Ed25519 handshake, heartbeat, reconnection), `webhooks.ts` (outbound delivery with circuit breaker), and `scheduler.ts` (background jobs for backups, cleanup, agent monitoring).",
+      "description": "The lib/ directory is the engine room. Key modules: db.ts (SQLite with WAL mode, auto-migrations), auth.ts (session cookies, API keys, RBAC with admin/operator/viewer roles), websocket.ts (Ed25519 handshake, heartbeat, reconnection), webhooks.ts (outbound delivery with circuit breaker), and scheduler.ts (background jobs for backups, cleanup, agent monitoring).",
       "focusDirectory": "src/lib",
       "colorMode": "fileTypes",
       "highlightLayers": [
@@ -141,7 +131,7 @@
     {
       "id": "state-management",
       "title": "State Management — Zustand Store",
-      "description": "A single Zustand store (`store/index.ts`) manages 60+ state atoms across all domains: dashboard mode, auth, WebSocket connection, tasks, agents, activities, notifications, sessions, token usage, chat, cron jobs, and UI state. Uses `subscribeWithSelector` middleware and persists UI preferences to localStorage.",
+      "description": "A single Zustand store (store/index.ts) manages 60+ state atoms across all domains: dashboard mode, auth, WebSocket connection, tasks, agents, activities, notifications, sessions, token usage, chat, cron jobs, and UI state. Uses subscribeWithSelector middleware and persists UI preferences to localStorage.",
       "focusDirectory": "src/store",
       "colorMode": "fileTypes",
       "highlightLayers": [
@@ -160,7 +150,7 @@
     {
       "id": "security-proxy",
       "title": "Security Layer — Proxy, CSRF & Access Control",
-      "description": "The `proxy.ts` middleware runs before every request, enforcing host allowlisting, CSRF origin validation on mutations, and auth requirements. Combined with rate limiting, audit logging, HMAC-signed webhooks, and Ed25519 device identity, Mission Control implements defense-in-depth security.",
+      "description": "The proxy.ts middleware runs before every request, enforcing host allowlisting, CSRF origin validation on mutations, and auth requirements. Combined with rate limiting, audit logging, HMAC-signed webhooks, and Ed25519 device identity, Mission Control implements defense-in-depth security.",
       "focusDirectory": "src",
       "colorMode": "fileTypes",
       "highlightLayers": [
@@ -183,7 +173,7 @@
     {
       "id": "testing",
       "title": "Testing — Vitest & Playwright",
-      "description": "Unit tests use Vitest with jsdom (60% coverage threshold). End-to-end tests use Playwright with 148 tests covering auth flows, panel navigation, API endpoints, and real-time features. Run `pnpm quality:gate` to execute lint, typecheck, and all tests in one pass.",
+      "description": "Unit tests use Vitest with jsdom (60% coverage threshold). End-to-end tests use Playwright with 148 tests covering auth flows, panel navigation, API endpoints, and real-time features. Run pnpm quality:gate to execute lint, typecheck, and all tests in one pass.",
       "focusDirectory": "tests",
       "colorMode": "fileTypes"
     },
