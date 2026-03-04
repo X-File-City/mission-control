@@ -13,7 +13,7 @@
     {
       "id": "app-router",
       "title": "Next.js App Router — Pages & 66 API Routes",
-      "description": "The app/ directory uses Next.js App Router to route all 28 panels as a single-page app. The api/ subdirectory contains 66 REST endpoints across 38 route groups covering agents, tasks, auth, sessions, webhooks, chat, pipelines, and more.",
+      "description": "Next.js App Router routes 28 panels as a SPA. The api/ directory holds 66 REST endpoints for agents, tasks, auth, sessions, webhooks, chat, and pipelines.",
       "focusDirectory": "src/app",
       "colorMode": "fileTypes",
       "highlightLayers": [
@@ -32,7 +32,7 @@
     {
       "id": "components",
       "title": "UI Components — 28 Panels & Layout System",
-      "description": "The component layer is organized into layout (NavRail, HeaderBar, LiveFeed), dashboard (StatsGrid, AgentNetwork, SessionsList), 28 feature panels (task board, agent squad, token dashboard, log viewer, webhook manager, etc.), chat (conversations, message bubbles), and shared UI primitives. Each panel is wrapped in an ErrorBoundary to isolate failures.",
+      "description": "Layout shell (NavRail, HeaderBar), 28 feature panels (tasks, agents, tokens, logs, webhooks), and a chat system. Each panel is error-isolated.",
       "focusDirectory": "src/components",
       "colorMode": "fileTypes",
       "highlightLayers": [
@@ -72,7 +72,7 @@
     {
       "id": "core-libraries",
       "title": "Core Libraries — Database, Auth, Real-Time & More",
-      "description": "The lib/ directory is the engine room. Key modules: db.ts (SQLite with WAL mode, auto-migrations), auth.ts (session cookies, API keys, RBAC with admin/operator/viewer roles), websocket.ts (Ed25519 handshake, heartbeat, reconnection), webhooks.ts (outbound delivery with circuit breaker), and scheduler.ts (background jobs for backups, cleanup, agent monitoring).",
+      "description": "The engine room: SQLite database with migrations, auth and RBAC, WebSocket and SSE real-time layers, outbound webhooks, and a background job scheduler.",
       "focusDirectory": "src/lib",
       "colorMode": "fileTypes",
       "highlightLayers": [
@@ -131,7 +131,7 @@
     {
       "id": "state-management",
       "title": "State Management — Zustand Store",
-      "description": "A single Zustand store (store/index.ts) manages 60+ state atoms across all domains: dashboard mode, auth, WebSocket connection, tasks, agents, activities, notifications, sessions, token usage, chat, cron jobs, and UI state. Uses subscribeWithSelector middleware and persists UI preferences to localStorage.",
+      "description": "A single Zustand store manages all client state — agents, tasks, sessions, chat, tokens, and UI preferences — with localStorage persistence.",
       "focusDirectory": "src/store",
       "colorMode": "fileTypes",
       "highlightLayers": [
